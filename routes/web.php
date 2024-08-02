@@ -10,6 +10,7 @@ Route::get('/', [SiteController::class, 'index'])->name('index');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{slug}', [PostController::class, 'show'])->name('view');
+Route::post('/post/{id}', [PostController::class, 'destroy'])->name('destroy');
 
 Route::get('/permisos', [PermisosController::class, 'index'])->name('permisos');
 

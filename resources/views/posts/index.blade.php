@@ -7,7 +7,12 @@
             <img src="{{$post->image}}" alt="{{$post->title}}">
             <h1 class="text-red-700">{{$post->title}}</h1>
             <p>{{$post->body}}</p>
-            <a href="{{url('post',$post->slug)}}" target="_blank" class="text-blue-400 underline">Ver Post</a>
+            <a href="{{route('view',['slug'=>$post->slug])}}" target="_blank" class="btn bg-blue-500 p-2">Ver Post</a>
+            <form action="{{route('destroy',['id'=>$post->id])}}" method="POST">
+                @csrf
+                <button class="btn bg-red-500 p-2">Eliminar Post</button>
+            </form>
+            
         </div>
     @endforeach
 @endsection
