@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\PermisosController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SiteController::class, 'index'])->name('index');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/post/{id}', [PostController::class, 'show'])->name('view');
 
 Route::get('/permisos', [PermisosController::class, 'index'])->name('permisos');
 
