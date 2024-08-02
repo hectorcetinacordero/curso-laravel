@@ -13,9 +13,9 @@
 <form action="{{route('update',$post)}}" method="POST">
     @csrf
     @method('PUT')
-    <input name="title" type="text" value="{{$post->title}}">
-    <input name="image" type="text" value="{{$post->image}}">
-    <textarea name="body" cols="30" rows="10">{{$post->body}}</textarea>
+    <input name="title" type="text" value="{{@old('title',$post->title)}}">
+    <input name="image" type="text" value="{{@old('image',$post->image)}}">
+    <textarea name="body" cols="30" rows="10">{{@old('body',$post->body)}}</textarea>
     <button>GUARDAR</button>
 </form>
 
