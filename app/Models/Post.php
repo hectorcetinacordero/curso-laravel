@@ -9,6 +9,15 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'author_id',
+        'title',
+        'body',
+        'image',
+        'slug',
+        'statatus'
+    ];
+
     /**
      * Get the user that owns the post.
      * @return \App\Models\User The related user model.

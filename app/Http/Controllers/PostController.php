@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return Post::create($request);
+        return Post::create($request->all());
     }
 
     /**
@@ -36,7 +36,7 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return Post::whereId($id)->update($request);
+        return Post::whereId($id)->update($request->all());
     }
 
     /**
