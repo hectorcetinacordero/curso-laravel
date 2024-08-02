@@ -20,6 +20,23 @@ class PostController extends Controller
         return view('posts.show', ['post' => $post]);
     }
 
+    public function edit($id)
+    {
+        $post = Post::find($id);
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+        ]);
+
+        $post->update($validated);
+        return redirect()->route('posts');
+    }
+
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
