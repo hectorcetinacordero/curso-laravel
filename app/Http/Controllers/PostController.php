@@ -32,6 +32,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'author_id' => 'required|numeric',
             'title' => 'required|max:255',
+            'image' => 'required|max:255',
             'body' => 'required',
             'slug' => 'required|max:255'
         ]);
@@ -50,6 +51,7 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|max:255',
+            'image' => 'required|max:255',
             'body' => 'required',
         ]);
 
