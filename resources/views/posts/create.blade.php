@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-<form action="{{route('store')}}" method="POST">
+<form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="author_id">Autor</label><br>
     <input name="author_id" id="author_id" type="text" value="{{@old('title',$post->author_id)}}">
@@ -19,7 +19,7 @@
     <input name="title" id="title" type="text" value="{{@old('title',$post->title)}}">
     <br>
     <label for="image">URL imagen</label><br>
-    <input name="image" id="image" type="text" value="{{@old('image',$post->image)}}">
+    <input name="image" id="image" type="file">
     <br>
     <label for="body">Contenido</label><br>
     <textarea name="body" id="body" cols="30" rows="10">{{@old('body',$post->body)}}</textarea>

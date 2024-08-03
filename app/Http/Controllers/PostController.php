@@ -32,10 +32,18 @@ class PostController extends Controller
         $validated = $request->validate([
             'author_id' => 'required|numeric',
             'title' => 'required|max:255',
-            'image' => 'required|max:255',
+            'image' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
             'body' => 'required',
             'slug' => 'required|max:255'
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $validated['image'] = $name;
+        }
 
         Post::create($validated);
         return redirect()->route('posts');
