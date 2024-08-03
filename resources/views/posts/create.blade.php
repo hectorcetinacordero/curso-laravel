@@ -10,9 +10,8 @@
             </ul>
         </div>
     @endif
-<form action="{{route('update',$post)}}" method="POST">
+<form action="{{route('store')}}" method="POST">
     @csrf
-    @method('PUT')
     <label for="author_id">Autor</label><br>
     <input name="author_id" id="author_id" type="text" value="{{@old('title',$post->author_id)}}">
     <br>

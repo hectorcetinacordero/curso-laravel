@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -18,6 +19,25 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->firstOrFail();
 
         return view('posts.show', ['post' => $post]);
+    }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->merge(['slug' => Str::slug($request->get('title'))]);
+        $validated = $request->validate([
+            'author_id' => 'required|numeric',
+            'title' => 'required|max:255',
+            'body' => 'required',
+            'slug' => 'required|max:255'
+        ]);
+
+        Post::create($validated);
+        return redirect()->route('posts');
     }
 
     public function edit($id)
