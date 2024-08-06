@@ -64,7 +64,7 @@
                     <main class="mt-6">
                         @can('permiso prueba')
                             <h1 class="">Hola Mundo!!!</h1>
-                        @endif
+                        @endcan
                         <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
                             <a
                                 href="https://laravel.com/docs"
