@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-    @if ($errors->any())
+@if ($errors->any())
         <div class="error-container">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-<form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
+<form action="#" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="author_id">Autor</label><br>
     <input name="author_id" id="author_id" type="text" value="{{@old('author_id')}}">
@@ -31,4 +31,29 @@
 @endsection
 
 @section('js')
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+        
+            var formData = new FormData(this);
+        
+            fetch('{{route('posts.destroy')}}', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': '{{csrf_token()}}',
+                    'Authorization': 'Bearer {{env('BEARER_TOKEN')}}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success response, e.g., display success message or redirect
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle error response, e.g., display error message
+                console.error(error);
+            });
+        });
+    </script>
 @endsection
