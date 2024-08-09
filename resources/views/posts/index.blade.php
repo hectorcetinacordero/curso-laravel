@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Posts</h1>
-    <a href="{{route('create')}}" class="btn bg-green-500 p-2">Nuevo Post</a>
+    <a href="{{route('create')}}" class="btn bg-blue-200 p-2">Nuevo Post</a>
 
     @foreach ($posts as $post)
         <div class="py-4">
