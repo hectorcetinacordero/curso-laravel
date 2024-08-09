@@ -6,7 +6,7 @@
 
     @foreach ($posts as $post)
         <div class="py-4">
-            <img src="{{$post->image}}" alt="{{$post->title}}">
+            <img src="{{asset('images/'.$post->image)}}" alt="{{$post->title}}">
             <h1 class="text-red-700">{{$post->title}}</h1>
             <p>{!! $post->body !!}</p>
             <a href="{{route('view',['slug'=>$post->slug])}}" target="_blank" class="btn bg-blue-500 p-2">Ver Post</a>
