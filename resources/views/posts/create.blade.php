@@ -41,7 +41,7 @@
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                    'X-CSRF-TOKEN': '{{csrf_token()}}',
                     'Authorization': 'Bearer 5|lXVE4dAir3MK48ezlJuxgbuo7hD0LmqxQ6Xp7PPG8d1f7454'
                 }
             })
