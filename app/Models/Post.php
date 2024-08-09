@@ -15,7 +15,7 @@ class Post extends Model
         'body',
         'image',
         'slug',
-        'statatus'
+        'status'
     ];
 
     /**

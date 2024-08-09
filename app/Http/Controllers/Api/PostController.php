@@ -28,9 +28,17 @@ class PostController extends Controller
             $name = time() . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/images');
             $image->move($destinationPath, $name);
-            $validated['image'] = $name;
+
+            $request->merge(['image' => $name]);
         }
-        return Post::create($request->all());
+        //dd($request->all());
+        return Post::create([
+            'author_id' => $request->get('author_id'),
+            'title' => $request->get('title'),
+            'image' => $request->get('image'),
+            'body' => $request->get('body'),
+            'slug' => $request->get('slug'),
+        ]);
     }
 
     /**
