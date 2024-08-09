@@ -23,6 +23,13 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->merge(['slug' => Str::slug($request->get('title'))]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $validated['image'] = $name;
+        }
         return Post::create($request->all());
     }
 
