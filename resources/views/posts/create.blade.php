@@ -30,27 +30,29 @@
 
 @endsection
 
-<script>
-    document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault();
-    
-        var formData = new FormData(this);
-    
-        fetch('{{route('posts.store')}}', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': '{{csrf_token()}}'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle success response, e.g., display success message or redirect
-            console.log(data);
-        })
-        .catch(error => {
-            // Handle error response, e.g., display error message
-            console.error(error);
+@section('js')
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+        
+            var formData = new FormData(this);
+        
+            fetch('{{route('posts.store')}}', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success response, e.g., display success message or redirect
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle error response, e.g., display error message
+                console.error(error);
+            });
         });
-    });
     </script>
+@endsection
