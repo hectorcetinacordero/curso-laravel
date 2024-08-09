@@ -36,7 +36,7 @@
     
         var formData = new FormData(this);
     
-        fetch('{{route('api.posts.store')}}', {
+        fetch('{{route('posts.store')}}', {
             method: 'POST',
             body: formData,
             headers: {
